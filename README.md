@@ -26,6 +26,7 @@ Open http://localhost:5173
 
 ## Project Structure
 
+```
 hr-workflow-designer/
 ├── index.html                 # HTML entry point
 ├── vite.config.ts             # Vite + React + Tailwind plugin config
@@ -75,6 +76,7 @@ hr-workflow-designer/
     └── mocks/
         ├── browser.ts         # MSW browser worker setup
         └── handlers.ts        # Mock API handlers — /automations, /simulate
+```
 
 ## What I'd Add With More Time
 - Auto-layout using dagre
