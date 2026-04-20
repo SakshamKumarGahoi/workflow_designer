@@ -24,6 +24,58 @@ Open http://localhost:5173
 - Used Lucid Icons for better design
 - Made the UI clean and crisp as per needs 
 
+## Project Structure
+
+hr-workflow-designer/
+├── index.html                 # HTML entry point
+├── vite.config.ts             # Vite + React + Tailwind plugin config
+├── tsconfig.json              # TypeScript compiler options
+├── package.json
+├── test.json                  # Sample workflow (Employee Onboarding)
+├── public/                    # Static assets & MSW service worker
+└── src/
+    ├── main.tsx               # React DOM bootstrap + MSW init
+    ├── App.tsx                # Root layout — Sidebar + Toolbar + Canvas + Form Panel
+    ├── index.css              # Global styles, design tokens, dark/light themes
+    │
+    ├── nodes/                 # Custom React Flow node components
+    │   ├── StartNode.tsx
+    │   ├── TaskNode.tsx
+    │   ├── ApprovalNode.tsx
+    │   ├── AutoStepNode.tsx
+    │   ├── EndNode.tsx
+    │   └── index.ts           # Node type registry
+    │
+    ├── components/            # UI components
+    │   ├── Sidebar.tsx        # Draggable node palette + import/export/reset
+    │   ├── NodeFormPanel.tsx   # Right panel — routes to type-specific forms
+    │   ├── SandboxPanel.tsx   # Simulation runner + results modal
+    │   ├── ThemeToggle.tsx    # Dark / light mode switch
+    │   └── forms/             # Per-node-type configuration forms
+    │       ├── StartForm.tsx
+    │       ├── TaskForm.tsx
+    │       ├── ApprovalForm.tsx
+    │       ├── AutoStepForm.tsx
+    │       └── EndForm.tsx
+    │
+    ├── store/
+    │   └── workflowStore.ts   # Zustand store — nodes, edges, selection, CRUD, import/export
+    │
+    ├── types/
+    │   └── index.ts           # TypeScript interfaces — node data, simulation, validation
+    │
+    ├── hooks/
+    │   ├── useSimulate.ts     # Validation → API call → simulation result
+    │   └── useAutoLayout.ts   # Auto-layout utility
+    │
+    ├── lib/
+    │   ├── validateWorkflow.ts  # Graph validation (start/end check, connectivity, cycle detection)
+    │   └── simulateWorkflow.ts  # Simulation helpers
+    │
+    └── mocks/
+        ├── browser.ts         # MSW browser worker setup
+        └── handlers.ts        # Mock API handlers — /automations, /simulate
+
 ## What I'd Add With More Time
 - Auto-layout using dagre
 - Undo/redo with zustand middleware
