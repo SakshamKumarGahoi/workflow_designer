@@ -1,0 +1,120 @@
+{
+  "nodes": [
+    {
+      "id": "node-1",
+      "type": "start",
+      "position": { "x": 350, "y": 40 },
+      "data": {
+        "type": "start",
+        "title": "Employee Onboarding",
+        "metadata": [
+          { "key": "department", "value": "Engineering" },
+          { "key": "location", "value": "Bengaluru" },
+          { "key": "startDate", "value": "2025-06-01" }
+        ]
+      }
+    },
+    {
+      "id": "node-2",
+      "type": "task",
+      "position": { "x": 350, "y": 180 },
+      "data": {
+        "type": "task",
+        "title": "Collect Employee Documents",
+        "description": "Gather Aadhaar, PAN, degree certificates, and previous employment docs",
+        "assignee": "HR Manager",
+        "dueDate": "2025-06-03",
+        "customFields": [
+          { "key": "priority", "value": "high" },
+          { "key": "checklist", "value": "aadhaar,pan,degree,relieving-letter" }
+        ]
+      }
+    },
+    {
+      "id": "node-3",
+      "type": "autoStep",
+      "position": { "x": 350, "y": 330 },
+      "data": {
+        "type": "autoStep",
+        "title": "Send Welcome Email",
+        "actionId": "send_email",
+        "actionParams": {
+          "to": "new.employee@company.com",
+          "subject": "Welcome to Tredence!",
+          "body": "We are excited to have you on board."
+        }
+      }
+    },
+    {
+      "id": "node-4",
+      "type": "task",
+      "position": { "x": 350, "y": 480 },
+      "data": {
+        "type": "task",
+        "title": "IT Setup & Access Provisioning",
+        "description": "Setup laptop, email, Slack, GitHub, and internal tool access",
+        "assignee": "IT Admin",
+        "dueDate": "2025-06-04",
+        "customFields": [
+          { "key": "tools", "value": "github,slack,jira,confluence" },
+          { "key": "laptop", "value": "MacBook Pro M3" }
+        ]
+      }
+    },
+    {
+      "id": "node-5",
+      "type": "approval",
+      "position": { "x": 350, "y": 630 },
+      "data": {
+        "type": "approval",
+        "title": "Manager Onboarding Sign-off",
+        "approverRole": "Manager",
+        "autoApproveThreshold": 2
+      }
+    },
+    {
+      "id": "node-6",
+      "type": "autoStep",
+      "position": { "x": 350, "y": 780 },
+      "data": {
+        "type": "autoStep",
+        "title": "Generate Offer Letter PDF",
+        "actionId": "generate_doc",
+        "actionParams": {
+          "template": "offer_letter_v2",
+          "recipient": "new.employee@company.com"
+        }
+      }
+    },
+    {
+      "id": "node-7",
+      "type": "approval",
+      "position": { "x": 350, "y": 930 },
+      "data": {
+        "type": "approval",
+        "title": "HR Director Final Approval",
+        "approverRole": "Director",
+        "autoApproveThreshold": 5
+      }
+    },
+    {
+      "id": "node-8",
+      "type": "end",
+      "position": { "x": 350, "y": 1080 },
+      "data": {
+        "type": "end",
+        "endMessage": "Onboarding complete! Employee is fully set up.",
+        "showSummary": true
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1-2", "source": "node-1", "target": "node-2", "animated": true },
+    { "id": "e2-3", "source": "node-2", "target": "node-3", "animated": true },
+    { "id": "e3-4", "source": "node-3", "target": "node-4", "animated": true },
+    { "id": "e4-5", "source": "node-4", "target": "node-5", "animated": true },
+    { "id": "e5-6", "source": "node-5", "target": "node-6", "animated": true },
+    { "id": "e6-7", "source": "node-6", "target": "node-7", "animated": true },
+    { "id": "e7-8", "source": "node-7", "target": "node-8", "animated": true }
+  ]
+}
